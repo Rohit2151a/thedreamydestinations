@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static  'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+ <header>
+    <nav>
+         <div class="row clearfix">
+             <img src="{% static 'images/logo1.png' %}" class="logo" >
+             <ul class="main-nav ml-auto" id="check-class">
+                 <li><a href="/">Home</a> </li>
+                 <li><a href="/destination">Destinations</a> </li>
+                 <li><a href="/gallery">Gallery</a> </li>
+                 {% if user.is_authenticated %}
+                 <li><a href="/logout">Logout</a></li>
+                 {% else %}
+                 <li><a href="/signup">Sign Up</a> </li>
+                 {% endif %}
+                 <li><a href="#">About Us</a> </li>
+             </ul>
+             <a href="#" class="mobile-icon ml-auto"  onclick="slideshow()"> <i class="fa fa-bars"></i></a>
+         </div>
+     </nav>
+
+ </header>
+ <section>
+     <div class="container my-5">
+             {% block content %}
+             {% endblock %}
+     </div>
+ </section>
+
+ <footer class="footer-copyright text-center py-3 fixed-bottom">
+            © 2020 Copyright:
+            <a href="https://www.linkedin.com/in/rohit-jadhav-11660917b/"> Rohit Jadhav.</a>
+            <br>
+            Rohitjadhav440@gmail.com
+ </footer>
+   <script type="text/javascript">
+      function slideshow() {
+          var x = document.getElementById('check-class');
+          if(x.style.display === "none"){
+              x.style.display="block";
+          }else {
+              x.style.display="none";
+          }
+      }
+   </script>
+</body>
+</html>

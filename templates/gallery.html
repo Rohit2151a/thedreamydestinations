@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{% static  'css/gallery.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</head>
+<body>
+ <header>
+     <nav class="container font-weight-bold">
+         <div class="row clearfix">
+             <img src="{% static 'images/logo1.png' %}" class="logo" >
+             <ul class="main-nav ml-auto" id="check-class">
+                 <li><a href="/">Home</a> </li>
+                 <li><a href="/destination">Destinations</a> </li>
+                 <li><a href="/gallery">Gallery</a> </li>
+                 {% if user.is_authenticated %}
+                 <li><a href="/logout">Logout</a></li>
+                 {% else %}
+                 <li><a href="/signup">Sign Up</a> </li>
+                 {% endif %}
+                 <li><a href="/aboutus">About Us</a> </li>
+             </ul>
+             <a href="#" class="mobile-icon ml-auto"  onclick="slideshow()"> <i class="fa fa-bars"></i></a>
+         </div>
+     </nav>
+ <div class="container">
+     <div class="py-3">
+         <h1 class="text-center display-3 text-white ml-auto"> MY GALLERY </h1>
+         <hr class="text-center w-25 border-white mx-auto">
+     </div>
+      <div class="container page-top">
+
+        <div class="row">
+
+           {% for clicked in images %}
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{ clicked.image.url }}" class="fancybox" rel="ligthbox">
+                    <img  src="{{ clicked.image.url }}" class="zoom img-fluid "  alt="">
+
+                </a>
+            </div>
+            {% endfor %}
+
+
+
+       </div>
+
+
+    </div>
+
+
+ </div>
+
+ </header>
+
+ <script type="text/javascript">
+      function slideshow() {
+          var x = document.getElementById('check-class');
+          if(x.style.display === "none"){
+              x.style.display="block";
+          }else {
+              x.style.display="none";
+          }
+      }
+ </script>
+ <script>
+    $(document).ready(function(){
+  $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
+    });
+
+    $(".zoom").hover(function(){
+
+		$(this).addClass('transition');
+	}, function(){
+
+		$(this).removeClass('transition');
+	});
+   });
+
+ </script>
+
+</body>
+</html>

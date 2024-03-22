@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static  'css/booking.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<body>
+ <header>
+    <nav>
+         <div class="row clearfix">
+             <img src="{% static 'images/logo1.png' %}" class="logo" >
+             <ul class="main-nav ml-auto" id="check-class">
+                 <li><a href="/">Home</a> </li>
+                 <li><a href="/destination">Destinations</a> </li>
+                 <li><a href="/gallery">Gallery</a> </li>
+                 {% if user.is_authenticated %}
+                 <li><a href="/logout">Logout</a></li>
+                 {% else %}
+                 <li><a href="/signup">Sign Up</a> </li>
+                 {% endif %}
+                 <li><a href="#">About Us</a> </li>
+             </ul>
+             <a href="#" class="mobile-icon ml-auto"  onclick="slideshow()"> <i class="fa fa-bars"></i></a>
+         </div>
+     </nav>
+
+ </header>
+ <section>
+        <div id="booking" class="section position-relative">
+                <div class="section-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="booking-form">
+                                <div class="form-header">
+                                    <h1>Make your reservation</h1>
+                                </div>
+                                <form method="post">
+                                     {% csrf_token %}
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Destination" name="Destination" value="{{ dest.name }}" required>
+                                        <span class="form-label">Destination</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="date" name="date" required>
+                                                <span class="form-label">Check In</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="From" name="From" required>
+                                                <span class="form-label">From</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" placeholder="Members" name="Members"required>
+                                                <span class="form-label">Members</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" placeholder="Days" value="{{ dest.days }}" name="Days" required>
+                                                <span class="form-label">Days</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                 <input type="number" class="form-control" placeholder="Nights" name="Nights" value={{ dest.nights }} required>
+                                                <span class="form-label">Nights</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 align-center">
+                                            <div class="form-group">
+                                                <input class="form-control" type="tel" placeholder="Enter you Phone" name="phone" pattern="(7|8|9)\d{9}$">
+                                                <span class="form-label">Phone</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-btn">
+                                        <button type="submit" class="submit-btn">Book Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div>
+
+             {% for message in messages %}
+                <script>
+                    swal("{{ message }}", "", "info");
+                </script>
+
+             {% endfor %}
+
+
+           </div>
+ </section>
+
+ <footer class="footer-copyright text-center py-3">
+            © 2020 Copyright:
+            <a href="https://www.linkedin.com/in/rohit-jadhav-11660917b/"> Rohit Jadhav.</a>
+            <br>
+            Rohitjadhav440@gmail.com
+ </footer>
+   <script type="text/javascript">
+      function slideshow() {
+          var x = document.getElementById('check-class');
+          if(x.style.display === "none"){
+              x.style.display="block";
+          }else {
+              x.style.display="none";
+          }
+      }
+   </script>
+</body>
+</html>

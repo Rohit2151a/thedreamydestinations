@@ -1,0 +1,161 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-size: 20px;
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Flamenco', cursive;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/Background5.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.clearfix:after{
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    clear: both;
+}
+.row{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.logo{
+    height: 120px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+    border-radius: 85%;
+    margin-left: 10px;
+}
+.main-nav{
+    float: right;
+    margin-top: 60px;
+}
+.main-nav li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 40px;
+    letter-spacing: 3px;
+}
+.main-nav li a{
+    padding: 5px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: 100;
+
+}
+.main-nav li a:hover{
+    border-bottom: 2px solid aqua;
+
+}
+
+.mobile-icon{
+display: none;
+}
+
+/* Featured Destinations */
+.feature-img
+{
+    padding: 100px 0 10px;
+
+}
+
+h1
+{
+    text-align: center;
+    padding-bottom: 30px;
+}
+.feature-img img{
+    width: 100%;
+}
+.price{
+    width: 70px;
+    height: 80px;
+    background: #ff5722;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 10px 1px rgba(37,73,214,0.18);
+    margin-bottom: 10px;
+    position: absolute;
+    left: 10px;
+    bottom: -25px;
+    letter-spacing: 1px;
+}
+.feature-img{
+position: relative;
+}
+.rating
+{
+    padding: 3px;
+    float: right;
+    background: #fff;
+    bottom: -1px;
+    right: 0;
+    position: absolute;
+}
+.features .fa{
+    font-size: 15px;
+    color: #ff5722;
+}
+.feature-details{
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.feature-details h4{
+    font-weight: 600;
+    letter-spacing: 2px;
+
+}
+.feature-details .fa{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.feature-details button{
+    margin-top: 10px;
+}
+
+
+/*///// Responsive queries ////*/
+@media only screen and (max-width: 1180px) {
+
+}
+
+@media only screen and (max-width: 998px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+    .main-nav{display: none}
+     .mobile-icon {
+         display: inline-block;
+         color: #fff;
+         float: right;
+         margin-top: 30px;
+         margin-right: 20px;
+     }
+     .main-nav{float: left;}
+     .main-nav li{
+         display: block;
+         margin-top: 5px;
+     }
+}
+
+@media only screen and (max-width: 480px) {
+    .logo{
+        height: 60px;
+    }
+    body{
+        background-repeat: repeat-y;
+    }
+}

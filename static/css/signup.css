@@ -1,0 +1,180 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-size: 20px;
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Flamenco', cursive;
+}
+header{
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/Background2.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+.clearfix:after{
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    clear: both;
+}
+.row{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.logo{
+    height: 120px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+    border-radius: 85%;
+    margin-left: 10px;
+}
+.main-nav{
+    float: right;
+    margin-top: 60px;
+}
+.main-nav li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 40px;
+    letter-spacing: 3px;
+}
+.main-nav li a{
+    padding: 5px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: 100;
+
+}
+.main-nav li a:hover{
+    border-bottom: 2px solid aqua;
+
+}
+h1{
+    color: #fff;
+    font-size: 240%;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+.mobile-icon{
+display: none;
+}
+.wrap{
+    max-width: 350px;
+    border-radius: 20px;
+    margin: auto;
+    background: rgba(0,0,0,0.8);
+    box-sizing: border-box;
+    padding: 30px;
+    color: #fff;
+    margin-top: 50px;
+}
+h2{
+    text-align: center;
+    color: aquamarine;
+    margin: 5px;
+}
+input[type=text], input[type=password], input[type=email], input[type="tel"]{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: rgba(0,0,0,0.10);
+    outline: none;
+    border: none;
+    border-bottom: 1px dotted #fff;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+}
+input[type=submit] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    border: none;
+    background: orange;
+    border-radius: 20px;
+    font-size: 20px;
+    color: aqua;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+input[type=submit]:hover{
+    background-color: coral;
+}
+.btn{
+    width: 100%;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    color: gold;
+}
+.btn:hover{
+    color: deepskyblue;
+}
+.message{
+    letter-spacing: 1px;
+    color: maroon;
+    text-align: center;
+}
+
+/*///// Responsive queries ////*/
+
+@media only screen and (max-width: 1180px) {
+    .wrap{
+        margin-top: 20%;
+    }
+
+}
+
+@media only screen and (max-width: 998px) {
+    .logo{
+        height: 80px;
+    }
+
+}
+
+ @media only screen and (max-width: 768px) {
+     .main-nav{display: none}
+     .mobile-icon {
+         display: inline-block;
+         color: #fff;
+         float: right;
+         margin-top: 30px;
+         margin-right: 20px;
+     }
+     .main-nav{float: left;}
+     .main-nav li{
+         display: block;
+         margin-top: 5px;
+     }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+    .logo{
+        height: 60px;
+    }
+    .wrap{
+        margin-top: 10px;
+        font-size: 70%;
+        width: 80%;
+    }
+
+
+}

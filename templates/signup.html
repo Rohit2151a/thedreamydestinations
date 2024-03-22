@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static  'css/signup.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+ <header>
+      <nav>
+          <img src="{% static 'images/logo1.png' %}" class="logo" >
+         <div class="row clearfix">
+             <ul class="main-nav" id="check-class">
+                 <li><a href="/">Home</a> </li>
+                 <li><a href="/destination">Destinations</a> </li>
+                 <li><a href="/gallery">Gallery</a> </li>
+                 <li><a href="/signup">Sign Up</a> </li>
+                 <li><a href="/aboutus">About Us</a> </li>
+             </ul>
+             <a href="#" class="mobile-icon"  onclick="slideshow()"> <i class="fa fa-bars"></i></a>
+         </div>
+     </nav>
+     <div class="wrap">
+        <h2> Sign Up</h2>
+         <form method="post">
+             {% csrf_token %}
+             <input type="text" placeholder="Username" name="username" required>
+             <input type="text" placeholder="First_Name" name="first_name" required>
+             <input type="text" placeholder="Last_Name" name="last_name" required>
+              <input type="tel" id="phone" placeholder="Phone" name="phone" pattern="(7|8|9)\d{9}$" required>
+             <input type="email" placeholder="Email" name="email" required>
+             <input type="password" placeholder="Password" name="password1" required>
+              <input type="password" placeholder="Confirm Password" name="password2" required>
+             <input type="submit" value="Submit">
+             <a href="/login" class="btn btn-nav">I have an Account.</a>
+         </form>
+         <div>
+         {% for message in messages %}
+                   <script>
+                       swal("{{ message }}","","info");
+                   </script>
+         {% endfor %}
+         </div>
+     </div>
+
+ </header>
+<script type="text/javascript">
+      function slideshow() {
+          var x = document.getElementById('check-class');
+          if(x.style.display === "none"){
+              x.style.display="block";
+          }else {
+              x.style.display="none";
+          }
+      }
+ </script>
+
+</body>
+</html>

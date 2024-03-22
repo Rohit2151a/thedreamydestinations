@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static  'css/destination.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<body>
+ <header>
+    <nav>
+         <div class="row clearfix">
+             <img src="{% static 'images/logo1.png' %}" class="logo" >
+             <ul class="main-nav ml-auto" id="check-class">
+                 <li><a href="/">Home</a> </li>
+                 <li><a href="/destination">Destinations</a> </li>
+                 <li><a href="/gallery">Gallery</a> </li>
+                 {% if user.is_authenticated %}
+                 <li><a href="/logout">Logout</a></li>
+                 {% else %}
+                 <li><a href="/signup">Sign Up</a> </li>
+                 {% endif %}
+                 <li><a href="/aboutus">About Us</a> </li>
+             </ul>
+             <a href="#" class="mobile-icon ml-auto"  onclick="slideshow()"> <i class="fa fa-bars"></i></a>
+         </div>
+     </nav>
+
+
+ <section class="features">
+ {% for message in messages %}
+       <script>
+                swal("{{ message }}", "We will contact you soon !", "success");
+       </script>
+ {% endfor %}
+
+   <div class="container">
+       <div class="row">
+           {% for dest in dests %}
+                   <div class="col-lg-4 col-md-6 col-sm-12">
+                     <form>
+                       {% csrf_token %}
+                       <div class="feature-box mr-2">
+                       <div class="feature-img">
+                       <img src="{{ dest.img.url }}">
+                       <div class="price">
+                           <p>{{ dest.price }} Rs</p>
+                       </div>
+                       <div class="rating">
+                               {% for i in dest.stars|get_range %}
+                                 <i class="fa fa-star"></i>
+                                {% endfor %}
+                       </div>
+                       </div>
+                        <div class="feature-details">
+                            <h4>{{ dest.name }}</h4>
+                            <p>{{ dest.description }}</p>
+                            <div>
+                                <span><i class="fa fa-map-marker"></i>{{ dest.place }}</span>
+                                <span><i class="fa fa-sun-o"></i>{{ dest.days }} Days</span>
+                                <span><i class="fa fa-moon-o"></i>{{ dest.nights }} Nights</span>
+                            </div>
+                            <button type="submit" name="submit" value="{{ dest.id }}" id="submit"  class="btn btn-outline-light" formmethod="post">Book Now</button>
+                        </div>
+                       </div>
+                     </form>
+                   </div>
+           {% endfor %}
+       </div>
+   </div>
+ </section>
+</header>
+
+ <footer class="footer-copyright text-center py-3 bottom">
+            © 2020 Copyright:
+            <a href="https://www.linkedin.com/in/rohit-jadhav-11660917b/"> Rohit Jadhav.</a>
+            <br>
+            Rohitjadhav440@gmail.com
+ </footer>
+
+   <script type="text/javascript">
+      function slideshow() {
+          var x = document.getElementById('check-class');
+          if(x.style.display === "none"){
+              x.style.display="block";
+          }else {
+              x.style.display="none";
+                }
+                           }
+
+
+
+   </script>
+</body>
+</html>

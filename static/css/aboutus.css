@@ -1,0 +1,107 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 20px;
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Flamenco', cursive;
+    background-color: #ff5722;
+
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/Background6.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.clearfix:after{
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    clear: both;
+}
+.row{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.logo{
+    height: 120px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+    border-radius: 85%;
+    margin-left: 10px;
+}
+.main-nav{
+    float: right;
+    margin-top: 60px;
+}
+.main-nav li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 40px;
+    letter-spacing: 3px;
+}
+.main-nav li a{
+    padding: 5px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: 100;
+
+}
+.main-nav li a:hover{
+    border-bottom: 2px solid aqua;
+
+}
+
+.mobile-icon{
+display: none;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.6);
+    letter-spacing: 1px;
+}
+
+.number{
+    font-style: normal;
+}
+
+/*///// Responsive queries ////*/
+
+@media only screen and (max-width: 1180px) {
+
+}
+
+@media only screen and (max-width: 998px) {
+
+}
+
+ @media only screen and (max-width: 768px) {
+     .main-nav{display: none}
+     .mobile-icon {
+         display: inline-block;
+         color: #fff;
+         float: right;
+         margin-top: 30px;
+         margin-right: 20px;
+     }
+     .main-nav{float: left;}
+     .main-nav li{
+         display: block;
+         margin-top: 5px;
+     }
+
+ }
+
+@media only screen and (max-width: 480px) {
+    .logo{
+        height: 60px;
+    }
+}
